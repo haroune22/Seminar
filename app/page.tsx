@@ -1,12 +1,19 @@
+import Test from "@/components/test";
 import { Button } from "@/components/ui/button";
+import { Suspense } from "react";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="flex gap-10 items-center justify-center w-full min-h-screen bg-red-100">
+    <div className="flex gap-10 items-center justify-center w-full min-h-screen bg-black text-white">
       hello world
       <Button size={"lg"} variant="default">
         click me
       </Button>
+      <Suspense fallback={<div>Loading slow data</div>}>
+        <Test />
+      </Suspense>
     </div>
   );
-}
+};
+
+export default Home;
