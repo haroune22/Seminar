@@ -9,9 +9,9 @@ const Home = () => {
       <Button size={"lg"} variant="default">
         click me
       </Button>
-      {/* <Suspense fallback={<div>Loading slow data</div>}>
+      <Suspense fallback={<div>Loading slow data</div>}>
         <Test />
-      </Suspense> */}
+      </Suspense>
     </div>
   );
 };

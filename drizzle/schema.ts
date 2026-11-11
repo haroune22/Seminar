@@ -20,7 +20,7 @@ export const userRoles = pgEnum("role", ["Student", "Teacher"]);
 
 export const usersTable = pgTable("users", {
   id: uuid().primaryKey().defaultRandom(),
-  name: varchar({ length: 255 }).notNull(),
+  username: varchar({ length: 255 }).notNull(),
   bio: text(),
   age: integer().notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
