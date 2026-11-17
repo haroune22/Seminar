@@ -22,7 +22,7 @@ export const usersTable = pgTable("users", {
   id: uuid().primaryKey().defaultRandom(),
   username: varchar({ length: 255 }).notNull(),
   bio: text(),
-  age: integer().notNull(),
+  age: integer(),
   email: varchar({ length: 255 }).notNull().unique(),
   password: varchar({ length: 255 }).notNull(),
   profilePic: varchar({ length: 255 }),

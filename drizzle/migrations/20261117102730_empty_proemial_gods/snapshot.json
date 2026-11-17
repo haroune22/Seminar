@@ -1,0 +1,38 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "3f78e580-dd3e-4c98-b1dd-aa95e726b595",
+  "prevIds": [
+    "6343184f-013f-4893-ad1c-a8dbe586a410"
+  ],
+  "footprints": [
+    {
+      "statementType": "alter_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "users",
+        "age"
+      ],
+      "writes": [
+        "s|colprop|public.users.age.notNull"
+      ],
+      "reads": [
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.users.age"
+      ],
+      "sqlHash": "ff61e9fdb1fa11e8"
+    }
+  ],
+  "deltas": [
+    {
+      "op": "alter",
+      "key": "columns\u0000[\"public\",\"users\",\"age\"]",
+      "set": {
+        "notNull": false
+      }
+    }
+  ]
+}

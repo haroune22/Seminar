@@ -7,7 +7,7 @@ import { db } from "./drizzle/db";
 import { userRoles, usersTable } from "./drizzle/schema";
 import { signInSchema } from "./lib/zod";
 
-type Role = (typeof userRoles.enumValues)[number];
+export type Role = (typeof userRoles.enumValues)[number];
 
 declare module "next-auth" {
   interface User {
