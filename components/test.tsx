@@ -1,10 +1,25 @@
-import { getUsers } from "@/actions/user";
-import React from "react";
+import { auth, signOut } from "@/auth";
+import { redirect } from "next/navigation";
+import { Button } from "./ui/button";
 
 const test = async () => {
-  const users = await getUsers();
-  console.log(users);
-  return <div>test</div>;
+  const session = await auth();
+  if (!session || !session.user) {
+    redirect("/login");
+  }
+  console.log(session);
+  return (
+    <div>
+      <Button
+        onClick={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        Logout
+      </Button>
+    </div>
+  );
 };
 
 export default test;

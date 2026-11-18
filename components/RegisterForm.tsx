@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { register, type RegisterState } from "@/action/user";
+import { register, type RegisterState } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -74,11 +74,13 @@ export function RegisterForm() {
         <FieldError messages={state.errors?.password} />
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex gap-4">
         <Label htmlFor="role">Role</Label>
-        {/* `name` is what puts the selected value into the FormData */}
-        <Select name="role" defaultValue="Student" required>
-          <SelectTrigger id="role">
+        <Select name="role" required>
+          <SelectTrigger
+            className="border border-black text-zinc-900"
+            id="role"
+          >
             <SelectValue placeholder="Choose a role" />
           </SelectTrigger>
           <SelectContent>

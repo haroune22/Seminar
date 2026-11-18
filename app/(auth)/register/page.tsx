@@ -5,13 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const Register = () => {
+const RegisterPage = () => {
   return (
-    <div className="w-full max-w-lg rounded-xl bg-gray-100 border md:px-6 md:py-8 px-4 py-4 shadow-xl">
+    <div className="w-full max-w-lg rounded-xl bg-gray-100 border md:px-6 md:py-6 px-4 py-4 shadow-xl">
       <Suspense fallback={null}>
-        <RedirectIfLoggedIn page="register" />
+        <RedirectIfLoggedIn />
       </Suspense>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5">
         <div className="text-center">
           <h1 className="mb-2 text-3xl font-bold sm:text-4xl">
             Create your account
@@ -66,4 +66,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;
