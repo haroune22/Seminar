@@ -1,0 +1,318 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "63d768be-d277-4a95-91a9-c30f2ef4e283",
+  "prevIds": [
+    "3f78e580-dd3e-4c98-b1dd-aa95e726b595"
+  ],
+  "footprints": [
+    {
+      "statementType": "create_table",
+      "statementTarget": [
+        "table",
+        "public",
+        "follows"
+      ],
+      "writes": [
+        "s|tbl|public.follows",
+        "n|tbl|public.follows",
+        "e|tbl|public.follows",
+        "n|rel|public.follows",
+        "n|type|public.follows",
+        "n|rel|public.follows_pkey",
+        "n|rel|public.follows_pair_unique"
+      ],
+      "reads": [
+        "n|sch|public"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "follows",
+        "followerId_idx"
+      ],
+      "writes": [
+        "s|idx|public.followerId_idx",
+        "n|idx|public.followerId_idx",
+        "e|idx|public.followerId_idx",
+        "n|rel|public.followerId_idx"
+      ],
+      "reads": [
+        "n|tbl|public.follows",
+        "n|sch|public",
+        "n|col|public.follows.followerId"
+      ]
+    },
+    {
+      "statementType": "create_index",
+      "statementTarget": [
+        "index",
+        "public",
+        "follows",
+        "followingId_idx"
+      ],
+      "writes": [
+        "s|idx|public.followingId_idx",
+        "n|idx|public.followingId_idx",
+        "e|idx|public.followingId_idx",
+        "n|rel|public.followingId_idx"
+      ],
+      "reads": [
+        "n|tbl|public.follows",
+        "n|sch|public",
+        "n|col|public.follows.followingId"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "follows"
+      ],
+      "writes": [
+        "s|fk|public.follows.follows_followerId_users_id_fkey",
+        "n|fk|public.follows.follows_followerId_users_id_fkey",
+        "e|fk|public.follows.follows_followerId_users_id_fkey",
+        "n|con|public.follows.follows_followerId_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.follows",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.follows.followerId",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "follows"
+      ],
+      "writes": [
+        "s|fk|public.follows.follows_followingId_users_id_fkey",
+        "n|fk|public.follows.follows_followingId_users_id_fkey",
+        "e|fk|public.follows.follows_followingId_users_id_fkey",
+        "n|con|public.follows.follows_followingId_users_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.follows",
+        "n|sch|public",
+        "n|tbl|public.users",
+        "n|sch|public",
+        "n|col|public.follows.followingId",
+        "n|col|public.users.id",
+        "e|uniqueness|public.users.id"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "name": "follows",
+        "isRlsEnabled": false,
+        "entityType": "tables"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "id",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "gen_random_uuid()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "followerId",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "followingId",
+        "type": "uuid",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": null,
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "createdAt",
+        "type": "timestamp",
+        "typeSchema": null,
+        "notNull": true,
+        "dimensions": 0,
+        "default": "now()",
+        "generated": null,
+        "identity": null,
+        "entityType": "columns"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "followerId_idx",
+        "nameExplicit": true,
+        "columns": [
+          {
+            "value": "followerId",
+            "isExpression": false,
+            "asc": true,
+            "nullsFirst": false,
+            "opclass": null
+          }
+        ],
+        "isUnique": false,
+        "where": null,
+        "with": "",
+        "method": "btree",
+        "concurrently": false,
+        "entityType": "indexes"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "followingId_idx",
+        "nameExplicit": true,
+        "columns": [
+          {
+            "value": "followingId",
+            "isExpression": false,
+            "asc": true,
+            "nullsFirst": false,
+            "opclass": null
+          }
+        ],
+        "isUnique": false,
+        "where": null,
+        "with": "",
+        "method": "btree",
+        "concurrently": false,
+        "entityType": "indexes"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "follows_followerId_users_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "followerId"
+        ],
+        "schemaTo": "public",
+        "tableTo": "users",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "CASCADE",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "follows_followingId_users_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "followingId"
+        ],
+        "schemaTo": "public",
+        "tableTo": "users",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "CASCADE",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "follows_pkey",
+        "columns": [
+          "id"
+        ],
+        "nameExplicit": false,
+        "entityType": "pks"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "follows_pair_unique",
+        "nameExplicit": true,
+        "columns": [
+          "followerId",
+          "followingId"
+        ],
+        "nullsNotDistinct": false,
+        "entityType": "uniques"
+      }
+    },
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "follows",
+        "name": "follows_must_differ",
+        "value": "\"followerId\" <> \"followingId\"",
+        "entityType": "checks"
+      }
+    }
+  ]
+}

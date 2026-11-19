@@ -1,10 +1,13 @@
+import { sql } from "drizzle-orm";
 import {
+  check,
   index,
   integer,
   pgEnum,
   pgTable,
   text,
   timestamp,
+  unique,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -28,6 +31,8 @@ export const usersTable = pgTable("users", {
   profilePic: varchar({ length: 255 }),
   role: userRoles().default("Student").notNull(),
   //posts: Posts[]
+  //following: Follows[]
+  //followedBy: Follows[]
   ...timestamps,
 });
 
@@ -44,4 +49,27 @@ export const postsTable = pgTable(
     ...timestamps,
   },
   (table) => [index("authorId_unique_idx").on(table.authorId)],
+);
+
+export const followsTable = pgTable(
+  "follows",
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    followerId: uuid()
+      .notNull()
+      .references(() => usersTable.id, { onDelete: "cascade" }),
+    followingId: uuid()
+      .notNull()
+      .references(() => usersTable.id, { onDelete: "cascade" }),
+    createdAt: timestamp().defaultNow().notNull(),
+  },
+  (table) => [
+    index("followerId_idx").on(table.followerId),
+    index("followingId_idx").on(table.followingId),
+    unique("follows_pair_unique").on(table.followerId, table.followingId),
+    check(
+      "follows_must_differ",
+      sql`${table.followerId} <> ${table.followingId}`,
+    ),
+  ],
 );
