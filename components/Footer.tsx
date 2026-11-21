@@ -2,15 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { NavLinks } from "./NavLinks";
 
+async function CopyrightYear() {
+  return <>{new Date().getFullYear()}</>;
+}
 const Footer = () => {
-  const Time = async () => {
-    "use cache";
-    return (
-      <div className="mx-auto mt-10 max-w-7xl border-t border-gray-800 pt-5 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Seminar. All rights reserved.
-      </div>
-    );
-  };
   return (
     <footer className="w-full md:flex flex-col mx-auto border-t border-fuchsia-300/30 bg-zinc-950 px-2 py-10">
       <div className="mx-auto flex-col flex sm:flex-row max-w-7xl items-start justify-between gap-12">
@@ -69,7 +64,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {Time()}
+      <div className="mx-auto mt-10 max-w-7xl border-t border-gray-800 pt-5 text-center text-sm text-gray-500">
+        © <CopyrightYear /> Seminar. All rights reserved.
+      </div>
     </footer>
   );
 };

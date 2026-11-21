@@ -1,6 +1,4 @@
-import Test from "@/components/test";
 import { Button } from "@/components/ui/button";
-import { Suspense } from "react";
 
 const Home = () => {
   return (
@@ -9,9 +7,6 @@ const Home = () => {
       <Button size={"lg"} variant="default">
         click me
       </Button>
-      <Suspense fallback={<div>Loading slow data</div>}>
-        <Test />
-      </Suspense>
     </div>
   );
 };

@@ -1,13 +1,15 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { auth, signIn } from "@/auth";
 import { db } from "@/drizzle/db";
 import { usersTable } from "@/drizzle/schema";
 import { signUpSchema } from "@/lib/zod";
 import { hash } from "bcryptjs";
+import { se } from "date-fns/locale";
 import { eq } from "drizzle-orm";
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 import z from "zod";
 
 export type RegisterState = {
@@ -83,3 +85,17 @@ export const getUsers = async () => {
 
   return users;
 };
+
+export const getCurrentUser = cache(async () => {
+  const session = await auth();
+
+  if (!session?.user) {
+    return null;
+  }
+
+  const user = await db.query.usersTable.findFirst({
+    where: { id: session.user.id },
+  });
+
+  return user ?? null;
+});
