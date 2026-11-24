@@ -5,7 +5,6 @@ import { db } from "@/drizzle/db";
 import { usersTable } from "@/drizzle/schema";
 import { signUpSchema } from "@/lib/zod";
 import { hash } from "bcryptjs";
-import { se } from "date-fns/locale";
 import { eq } from "drizzle-orm";
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
@@ -97,5 +96,12 @@ export const getCurrentUser = cache(async () => {
     where: { id: session.user.id },
   });
 
+  return user ?? null;
+});
+
+export const getUserById = cache(async (id: string) => {
+  const user = await db.query.usersTable.findFirst({
+    where: { id },
+  });
   return user ?? null;
 });

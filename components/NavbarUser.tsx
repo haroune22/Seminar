@@ -9,11 +9,14 @@ import {
 } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/auth";
+import { redirect } from "next/navigation";
 
 export async function NavbarUser() {
   const user = await getCurrentUser();
 
-  if (!user) return null;
+  if (!user) {
+    redirect("/login");
+  }
 
   return (
     <div className="flex items-center gap-4">

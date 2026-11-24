@@ -7,18 +7,18 @@ async function CopyrightYear() {
 }
 const Footer = () => {
   return (
-    <footer className="w-full md:flex flex-col mx-auto border-t border-fuchsia-300/30 bg-zinc-950 px-2 py-10">
-      <div className="mx-auto flex-col flex sm:flex-row max-w-7xl items-start justify-between gap-12">
-        <div className="flex flex-1 flex-col gap-2">
+    <footer className="w-full md:flex flex-col mx-auto  border-t border-blue-300/30 text-black px-2 py-10">
+      <div className="mx-auto flex-col w-full flex sm:flex-row max-w-7xl items-center justify-around gap-4">
+        <div className="flex flex-1 flex-col items-center gap-2">
           <Image
             src="/seminar-logo.png"
             alt="Seminar"
-            width={350}
+            width={300}
             height={100}
             className="h-10 object-cover"
           />
 
-          <p className="max-w-sm text-sm leading-6 text-gray-400">
+          <p className="max-w-sm text-sm leading-6 text-gray-600">
             find teacher & students....
           </p>
         </div>
@@ -35,28 +35,28 @@ const Footer = () => {
           <nav className="flex flex-col items-start gap-2">
             <Link
               href="/about"
-              className="text-sm text-gray-400 transition-colors hover:text-fuchsia-400"
+              className="text-sm text-gray-600 transition-colors hover:text-blue-600"
             >
               About Us
             </Link>
 
             <Link
               href="/privacy"
-              className="text-sm text-gray-400 transition-colors hover:text-fuchsia-400"
+              className="text-sm text-gray-600 transition-colors hover:text-blue-600"
             >
               Privacy Policy
             </Link>
 
             <Link
               href="/terms"
-              className="text-sm text-gray-400 transition-colors hover:text-fuchsia-400"
+              className="text-sm text-gray-600 transition-colors hover:text-blue-600"
             >
               Terms & Conditions
             </Link>
 
             <Link
               href="/contact"
-              className="text-sm text-gray-400 transition-colors hover:text-fuchsia-400"
+              className="text-sm text-gray-600 transition-colors hover:text-blue-600"
             >
               Contact
             </Link>
